@@ -13,7 +13,7 @@ $ make
 To run:
 ```
 $ sudo ./out/image.elf
-$ ifconfig tap0 192.168.2.1/24
+$ sudo ifconfig tap0 192.168.2.1/24
 ```
 
 Now you can check the uptime here:
