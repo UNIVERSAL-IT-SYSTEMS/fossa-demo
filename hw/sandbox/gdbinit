@@ -1,0 +1,6 @@
+shell echo -n "att ">/tmp/tass_sandbox  && ps ax | grep image.elf | grep -v grep | grep -v sudo | cut -d " " -f1 >>/tmp/tass_sandbox
+source /tmp/tass_sandbox
+ file out/image.elf
+ #stepi
+ layout src
+ focus c

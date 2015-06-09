@@ -1,0 +1,9 @@
+[submodule "picotcp"]
+	path = picotcp
+	url = git@github.com:tass-belgium/picotcp.git
+[submodule "src/fossa"]
+	path = src/fossa
+	url = git@github.com:tass-belgium/fossa.git
+[submodule "src/01-picotcp-bsd"]
+	path = src/01-picotcp-bsd
+	url = git@github.com:tass-belgium/picotcp-bsd.git

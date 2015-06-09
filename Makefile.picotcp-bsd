@@ -1,0 +1,25 @@
+-include ../../config.mk
+-include ../../tools/kconfig/.config
+PREFIX?=$(PWD)/build
+CROSS_COMPILE?=arm-none-eabi-
+CC?=$(CROSS_COMPILE)gcc
+OBJS-y:=pico_bsd_sockets.o  
+OBJS-$(FREERTOS)+=pico_osal_freertos.o
+OBJS-$(NOOS)+=pico_osal_noos.o
+ARCH?=stm32
+CFLAGS=-Iconfig $(EXTRA_CFLAGS) $(PLATFORM_CFLAGS) -I $(PREFIX)/include
+
+all: $(PREFIX)/lib/libpicobsd.a
+
+
+%.o: %.c
+	@echo compiling pico-bsd with flags: $(CFLAGS) 
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+$(PREFIX)/lib/libpicobsd.a: $(OBJS-y)
+	cp *.h $(PREFIX)/include
+	@$(CROSS_COMPILE)ar cru $@ $(OBJS-y)
+	@$(CROSS_COMPILE)ranlib $@
+	
+clean:
+	rm -f *.o *.a
