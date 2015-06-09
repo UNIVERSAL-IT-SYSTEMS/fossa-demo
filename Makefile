@@ -101,5 +101,7 @@ clean:
 	@for s in $(ARCH_DIR); do \
 		make -C $$s clean; \
 	done
+	@rm src/fossa/Makefile
+	@rm src/01-picotcp-bsd/Makefile
 	@rm -rf out
 
